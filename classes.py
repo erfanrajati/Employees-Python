@@ -29,12 +29,66 @@ class Employee:
 
 
 class Programmer(Employee):
-    pass
+    def get_all_projs(self, company):
+        return company.get_all_projs()
+    
+    def add_proj(self, company, proj):
+        company.add_proj(proj)
+    
+    def remove_proj(self, company, proj):
+        company.remove_proj(proj)
+
+
+
+
 
 
 class Tester(Employee):
-    pass
+    def accept_proj(self, company, proj):
+        for p in company.projs:
+            if p[0] == proj:
+                p[1] = True
+
+    def decline_proj(self, company, proj):
+        for p in company.projs:
+            if p[0] == proj:
+                p[1] = False
+
+
+
+
 
 
 class Manager(Programmer, Tester):
     pass
+
+
+class Company:
+    def __init__(self):
+        self.emps = {
+            "Employees":[],
+            "Programmers":[],
+            "Testers":[],
+            "Managers":[]
+        }
+        self.projs = []
+
+    def add_emp(self, emp, role):
+        self.emps[role].append(emp)
+
+    def remove_emp(self, emp, role):
+        self.emps[role].remove(emp)
+
+    def get_all_emps(self):
+        return self.emps
+
+    def add_proj(self, proj):
+        self.projs.append(proj)
+
+    def remove_proj(self, proj):
+        self.projs.remove(proj)
+
+    def get_all_projs(self):
+        return self.projs
+
+
