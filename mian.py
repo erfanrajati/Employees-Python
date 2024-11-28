@@ -29,7 +29,7 @@ def main():
     main_manager.password = "1234"
     main_company.add_emp(main_manager, "Manager")
 
-    print("Welcome to Erfan's Portal. Please type you username and password.")
+    print("Welcome! Type your username and password.")
 
     while True:
         username = input("username: ")
@@ -43,8 +43,5 @@ def main():
         else:
             man_menu(main_manager)
             break
-
-
-
 
 main()
